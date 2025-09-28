@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Barbearia Emanuel — Portfólio</title>
+  <meta name="description" content="Barbearia Emanuel — cortes, barbas e estilo. Galeria e contato." />
+  <style>
+    :root{
+      --bg:#0f1724; /* dark navy */
+      --card:#0b1220;
+      --accent:#eab308; /* warm gold */
+      --muted:#9aa4b2;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#061021 0%, #081426 60%);color:#e6eef7;line-height:1.45}
+    .container{max-width:1100px;margin:0 auto;padding:32px}
+
+    /* Header */
+    header{position:sticky;top:12px;z-index:60}
+    .nav{display:flex;align-items:center;justify-content:space-between;background:var(--glass);backdrop-filter: blur(6px);padding:12px 18px;border-radius:12px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#ffcf6b);display:flex;align-items:center;justify-content:center;color:#071126;font-weight:700;font-size:20px}
+    nav a{color:inherit;text-decoration:none;margin-left:18px;font-weight:600}
+    .menu-toggle{display:none;border:0;background:transparent;color:var(--muted)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0}
+    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:28px;border-radius:18px}
+    h1{font-size:36px;margin:0}
+    p.lead{color:var(--muted);margin:12px 0 22px}
+    .cta{display:inline-block;background:var(--accent);color:#071126;padding:12px 18px;border-radius:12px;font-weight:700;text-decoration:none}
+    .services{display:flex;gap:10px;margin-top:18px}
+    .service{background:rgba(255,255,255,0.02);padding:10px 12px;border-radius:10px;font-size:14px}
+
+    .hero-aside{background-image:url('https://images.unsplash.com/photo-1543163521-1bf539c55f0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');background-size:cover;background-position:center;height:420px;border-radius:14px;box-shadow:inset 0 -60px 80px rgba(0,0,0,0.45)}
+
+    /* About + Gallery */
+    section{margin-top:28px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .about{background:var(--card);padding:20px;border-radius:12px}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .thumb{position:relative;overflow:hidden;border-radius:10px;cursor:pointer}
+    .thumb img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .35s ease}
+    .thumb:hover img{transform:scale(1.06)}
+
+    /* Footer / Contact */
+    footer{margin-top:30px;padding:20px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .input, textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:0;font-weight:700;background:var(--accent);color:#071126;text-decoration:none}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(2,6,23,0.8);display:flex;align-items:center;justify-content:center;z-index:120;opacity:0;pointer-events:none;transition:opacity .18s ease}
+    .lightbox.open{opacity:1;pointer-events:auto}
+    .lightbox img{max-width:92%;max-height:82%;border-radius:12px;box-shadow:0 20px 60px rgba(2,6,23,0.7)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .hero-aside{height:260px}
+      .grid-2{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .contact-grid{grid-template-columns:1fr}
+      .menu-toggle{display:inline-block}
+      nav a{display:none}
+    }
+
+    @media (max-width:520px){
+      h1{font-size:28px}
+      .thumb img{height:140px}
+      .gallery{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="logo">E</div>
+          <div>
+            <div style="font-weight:800">Barbearia Emanuel</div>
+            <div style="font-size:12px;color:var(--muted)">Cortes — Barbas — Estilo</div>
+          </div>
+        </div>
+        <nav>
+          <a href="#servicos">Serviços</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#contato">Contato</a>
+          <button class="menu-toggle" aria-label="abrir menu">☰</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <h1>Seu estilo, nossa arte — Barbearia Emanuel</h1>
+          <p class="lead">Cortes clássicos e modernos, aparo de barba e atendimento personalizado. Agende seu horário e renove o visual.</p>
+          <a class="cta" href="#contato">Agendar agora</a>
+
+          <div class="services" aria-hidden>
+            <div class="service">Corte Masculino</div>
+            <div class="service">Barba & Bigode</div>
+            <div class="service">Sobrancelha</div>
+          </div>
+
+          <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+            <div style="display:flex;gap:12px;align-items:center">
+              <div style="width:52px;height:52px;border-radius:10px;background:var(--glass);display:flex;align-items:center;justify-content:center">✂️</div>
+              <div>
+                <div style="font-weight:700">Atendimento VIP</div>
+                <div style="font-size:13px;color:var(--muted)">Ambiente confortável e produtos premium</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-aside" role="img" aria-label="Foto do espaço da barbearia"></aside>
+      </section>
+
+      <section id="sobre" class="grid-2">
+        <div class="about">
+          <h2>Sobre a Barbearia Emanuel</h2>
+          <p style="color:var(--muted)">A Barbearia Emanuel foi criada para trazer um espaço onde tradição e estilo se encontram. Atendemos com técnicas atualizadas e um atendimento próximo — ideal para quem busca personalidade no corte.</p>
+
+          <ul style="margin-top:12px;color:var(--muted)">
+            <li>Equipe especializada</li>
+            <li>Produtos de alta qualidade</li>
+            <li>Ambiente relaxante</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 style="margin-top:0">Destaques</h3>
+          <div style="display:flex;gap:12px;margin-top:10px">
+            <div style="flex:1;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px">Cortes R$ 40+</div>
+            <div style="flex:1;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px">Barba R$ 25+</div>
+          </div>
+
+          <div style="margin-top:14px;background:rgba(255,255,255,0.02);padding:12px;border-radius:10px">
+            <strong>Horário</strong>
+            <div style="color:var(--muted);margin-top:6px">Seg — Sex: 09:00 — 19:00<br>Sáb: 09:00 — 14:00</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="galeria" style="margin-top:18px">
+        <h2>Galeria</h2>
+        <p style="color:var(--muted);margin-top:6px">Confira alguns trabalhos recentes. Clique nas imagens para ampliar.</p>
+
+        <div class="gallery" aria-label="Galeria de cortes">
+          <!-- imagens  -->
+          <div class="thumb" data-src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"><img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="corte 1"></div>
+          <div class="thumb" data-src="https://images.unsplash.com/photo-1603386329879-7f0b8f0dfd3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"><img src="https://images.unsplash.com/photo-1603386329879-7f0b8f0dfd3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="corte 2"></div>
+          <div class="thumb" data-src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"><img src="https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="corte 3"></div>
+          <div class="thumb" data-src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="corte 4"></div>
+          <div class="thumb" data-src="https://images.unsplash.com/photo-1625037449363-c9a2b6f5b0a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"><img src="https://images.unsplash.com/photo-1625037449363-c9a2b6f5b0a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="corte 5"></div>
+          <div class="thumb" data-src="https://images.unsplash.com/photo-1600486913747-55f78c2d7f6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60"><img src="https://images.unsplash.com/photo-1600486913747-55f78c2d7f6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60" alt="corte 6"></div>
+        </div>
+      </section>
+
+      <footer id="contato">
+        <div class="contact-grid">
+          <div>
+            <h3>Contato & Agendamento</h3>
+            <p style="color:var(--muted)">Telefone/WhatsApp: <strong>(48) 99969-3892</strong></p>
+            <p style="color:var(--muted)">Endereço: R. Chile, 143 - Barreiros, São José - SC, 88117-230</p>
+
+            <div style="margin-top:10px">
+              <a class="btn" href="tel:+551100000000">Ligar</a>
+              <a class="btn" style="margin-left:8px" href="https://wa.me/551100000000" target="_blank">WhatsApp</a>
+            </div>
+          </div>
+
+          <div>
+            <form onsubmit="handleContact(event)">
+              <input class="input" id="nome" placeholder="Seu nome" required />
+              <input class="input" id="email" placeholder="Email" style="margin-top:8px" required />
+              <textarea id="mensagem" class="input" placeholder="Mensagem" rows="4" style="margin-top:8px"></textarea>
+              <div style="margin-top:8px;text-align:right"><button class="btn" type="submit">Enviar</button></div>
+            </form>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;color:var(--muted);font-size:13px;text-align:center">© <span id="year"></span> Barbearia Emanuel — Todos os direitos reservados</div>
+      </footer>
+    </main>
+  </div>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+    <img id="lightbox-img" alt="ampliacao">
+  </div>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // gallery lightbox
+    document.querySelectorAll('.thumb').forEach(t => {
+      t.addEventListener('click', ()=>{
+        const src = t.getAttribute('data-src') || t.querySelector('img').src;
+        const lb = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        img.src = src;
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden','false');
+      })
+    })
+    document.getElementById('lightbox').addEventListener('click', (e)=>{
+      if(e.target.id === 'lightbox' || e.target.id === 'lightbox-img'){
+        const lb = document.getElementById('lightbox');
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden','true');
+      }
+    })
+
+    // simple mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', ()=>{
+      document.querySelectorAll('nav a').forEach(a=>{
+        a.style.display = a.style.display === 'inline-block' ? 'none' : 'inline-block'
+      })
+    })
+
+    // faux contact handler (client-side)
+    function handleContact(e){
+      e.preventDefault();
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const mensagem = document.getElementById('mensagem').value.trim();
+      if(!nome || !email){alert('Preencha nome e email.');return}
+      // serviço de email
+      alert('Obrigado, ' + nome + '! Sua mensagem foi recebida.');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
